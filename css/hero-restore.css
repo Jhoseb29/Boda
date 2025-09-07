@@ -1,0 +1,92 @@
+/* Estilos restaurados para la sección Hero */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: url("../images/recuerdos/nebula-rosa-en-el-espacio-11053.webp") no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    padding: 100px 0;
+}
+
+.hero h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 72px;
+    margin-bottom: 20px;
+    font-weight: 400;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero p.intro {
+    font-size: 24px;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilos para el botón de RSVP */
+.rsvp-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: #e86fd4;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.rsvp-btn:hover {
+    background-color: #d45ac2;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Flecha de desplazamiento */
+.down-arrow {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.down-arrow a {
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.down-arrow a:hover {
+    color: #e86fd4;
+    transform: translateY(5px);
+}
