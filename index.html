@@ -74,7 +74,8 @@
                                 </a>
                             </div>
                             <br>
-                            <p>Dios en su amor nos unió, y con gran alegría queremos invitarlos a celebrar nuestra unión y el comienzo de esta nueva etapa.</p>
+                            <p>Dios en su amor nos unió, y con gran alegría queremos invitarlos a celebrar nuestra unión
+                                y el comienzo de esta nueva etapa.</p>
                         </div>
                     </div>
                 </div>
@@ -176,8 +177,8 @@
                     <div class="schedule-event left">
                         <div class="event-content">
                             <div class="event-time">6:30 PM</div>
-                            <div class="event-title">Baile</div>
-                            <div class="event-description">¡A bailar! Celebraremos con la mejor música y alegría.</div>
+                            <div class="event-title">Baile Novios</div>
+
                         </div>
                     </div>
 
@@ -446,8 +447,7 @@
             <div class="row">
                 <div>
                     <h2 class="header">Presencia</h2>
-                    <p class="header">Para nosotros, el mejor regalo es que compartas este día con nosotros.
-                        Pero si deseas tener un detalle, estaremos felices de recibirlo con cariño. 💖</p>
+                    <p class="header">El mejor regalo es que compartas este día con nosotros. Pero si deseas tener un detalle, estaremos felices de recibirlo con cariño. 💖</p>
                 </div>
             </div>
         </div>
@@ -518,49 +518,67 @@
         });
     </script>
     <script src="js/scripts.js"></script>
+    <style>
+        /* Pantalla de bienvenida */
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 9999;
+            font-size: 6rem;
+        }
 
-    <!-- Reproductor de música oculto -->
-    <audio id="backgroundMusic" loop autoplay>
+        #overlay p {
+            font-family: 'Alex Brush', cursive;
+            font-size: 6rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            color: #000;
+
+        }
+    </style>
+
+    <!-- Reproductor de música -->
+    <audio id="backgroundMusic" loop>
         <source src="sounds/Gibran Alcocer - Idea 10 - Kurate Music.mp3" type="audio/mpeg">
     </audio>
 
+    <!-- Pantalla de bienvenida -->
+    <div id="overlay">
+        <div>
+            <p>Bienvenidos, haz click para comenzar.</p>
+        </div>
+        <br>
+    </div>
+
     <script>
-        // Reproducir música automáticamente cuando la página cargue
-        document.addEventListener('DOMContentLoaded', function () {
-            const music = document.getElementById('backgroundMusic');
+        const overlay = document.getElementById("overlay");
+        const music = document.getElementById("backgroundMusic");
 
-            // Configuración inicial
-            music.volume = 0.3; // Volumen al 30%
+        music.volume = 0.3; // volumen inicial bajo
 
-            // Intentar reproducir automáticamente
-            function tryPlay() {
-                const playPromise = music.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(error => {
-                        // Si falla, intentar de nuevo después de un breve retraso
-                        setTimeout(tryPlay, 100);
-                    });
-                }
-            }
-
-            // Iniciar reproducción
-            tryPlay();
-
-            // Intentar reproducir en cualquier interacción del usuario
-            function startOnInteraction() {
-                tryPlay();
-                document.removeEventListener('click', startOnInteraction);
-                document.removeEventListener('keydown', startOnInteraction);
-                document.removeEventListener('touchstart', startOnInteraction);
-            }
-
-            // Escuchar múltiples eventos de interacción
-            document.addEventListener('click', startOnInteraction);
-            document.addEventListener('touchstart', startOnInteraction);
-            document.addEventListener('scroll', startOnInteraction);
-            document.addEventListener('wheel', startOnInteraction);
+        overlay.addEventListener("click", () => {
+            music.play().then(() => {
+                overlay.style.display = "none"; // quitar pantalla
+            }).catch(err => {
+                console.log("No se pudo reproducir:", err);
+            });
         });
     </script>
+
+
 
     <!-- Script para scroll suave -->
     <script src="js/smooth-scroll.js"></script>
